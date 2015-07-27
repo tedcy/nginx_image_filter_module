@@ -32,6 +32,9 @@ cd $lib_webp_src_path
 ./configure
 make
 make install
+if !(grep -q "/usr/local/lib" /etc/ld.so.conf);then
+    echo "/usr/local/lib" >> /etc/ld.so.conf
+fi
 ldconfig
 cd ..
 rm -rf $lib_webp_src_path
