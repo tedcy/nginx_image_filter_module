@@ -1,3 +1,11 @@
+function check_exist_f()
+{
+	if [ ! -f $1 ];then
+		echo "$1 doesn't exist"
+		exit 1
+	fi
+}
+
 echo "init installation of nginx ..."
 readonly nginx_tar="nginx-1.2.9.tar.gz"
 readonly nginx_src_path="nginx-1.2.9"
