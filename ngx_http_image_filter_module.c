@@ -501,8 +501,9 @@ ngx_http_save_cache_file(ngx_http_request_t *r, ngx_chain_t *in,ngx_chain_t *out
         }
         im->file_name[index] = 0;
 	    if(access((char*)im->file_name,F_OK) != 0) {
-            if (ngx_create_dir(im->file_name, S_IRWXU|S_IRWXG|S_IRWXO) == NGX_FILE_ERROR) {
+            if (ngx_create_dir(im->file_name, S_IRWXU) == NGX_FILE_ERROR) {
 			    ngx_log_error(NGX_LOG_ERR, r->connection->log, ngx_errno, "create \"%s\" failed",im->file_name);
+                free(im);
                 return NGX_ERROR;
 		    }
         }
