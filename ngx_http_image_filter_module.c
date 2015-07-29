@@ -452,7 +452,7 @@ ngx_http_save_cache_file_handler(ngx_event_t *ev)
 		ngx_log_error(NGX_LOG_ERR, ev->log, ngx_errno, "\"%s\"",im->file_name);
 	}
 	
-	ngx_log_error(NGX_LOG_ERR, ev->log, 0, "\"%s\",\"%s\"",im->file_name,new_name);
+	//ngx_log_error(NGX_LOG_ERR, ev->log, 0, "\"%s\",\"%s\"",im->file_name,new_name);
 	free(im->buf);
     free(im);
 }
@@ -494,7 +494,7 @@ ngx_http_save_cache_file(ngx_http_request_t *r, ngx_chain_t *in,ngx_chain_t *out
     while(1){
         if(index == im->name_len) 
             break;
-		ngx_log_error(NGX_LOG_ERR, r->connection->log, 0, "\"%c\"\"%d\"",im->file_name[index],index);
+		//ngx_log_error(NGX_LOG_ERR, r->connection->log, 0, "\"%c\"\"%d\"",im->file_name[index],index);
         if(im->file_name[index] != '/') {
             index++;
             continue;
@@ -574,7 +574,7 @@ ngx_http_lookup_cache_file(ngx_http_request_t *r, ngx_chain_t *in,ngx_chain_t *o
 	uri_file_name = buf;
 
 	strncat((char*)file_name,(char *)uri_file_name,128);
-    ngx_log_error(NGX_LOG_ERR, r->connection->log, 0, "\"%s\"\n",file_name);
+    //ngx_log_error(NGX_LOG_ERR, r->connection->log, 0, "\"%s\"\n",file_name);
 
     if(access((char *)file_name,F_OK) == 0) {
 
